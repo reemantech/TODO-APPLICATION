@@ -1,0 +1,232 @@
+body{
+    background-color: #66a5ad;
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+/* ------------------------------TODO APP Container ------------------------------ */
+.container{
+    margin: auto;
+    background-color: white;
+    margin-top: 25px;
+    height: 500px;
+    width: 600px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgb(2, 53, 63);
+}
+
+                                /* heading of the container */
+h1{
+    text-align: center;
+    padding: 4px;
+    border-bottom: 0.12rem solid #07575b;
+    color:#07575b;
+}
+
+/* -------------------------------form container--------------------------------------- */
+#form-container{
+
+    font-size: small;
+}
+
+h6{
+    font-size: small;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    color: #2c7873;
+    height: 20px;
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+                                /* Task description */
+#task-description{
+    padding-left: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid #66A5AD; 
+    padding-bottom: 10px;
+    height: 45px;
+    margin-top: -21px;
+}
+#task-description:hover{
+    background-color: #dff3f7;
+}
+input{
+    border: none;
+    cursor:text;
+    background: transparent;
+}
+input:focus{
+    outline: none;
+}
+#task-description input{
+    width: 96%;
+   
+}
+
+                            /*Category and date container is named as more specs */
+#more-specs{
+    display: flex;
+    border-bottom: 1px solid #66A5AD;
+}
+
+#category{
+    padding: 5px;
+    padding-left: 10px;
+    width: 48%;
+    border-right: 1px solid #66A5AD;
+}
+#category:hover{
+    background-color: #dff3f7;
+}
+
+#task-category{
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    color: rgb(109, 108, 108);
+    padding: 5px;
+    width: 80%;
+    background: transparent;
+}
+#task-category:focus{
+    outline: none;
+}
+#due-date{
+    padding: 5px;
+    padding-left: 10px;
+    width: 47%;
+}
+#due-date:hover{
+    background-color:#dff3f7;
+}
+#due-date input{
+    padding: 5px;
+    padding-left: 0px;
+    color: gray;
+}
+/*---------------------------------- +ADD TASK  Button-----------------------------------------*/
+button{
+    border: none;
+    background:transparent;
+    height: 50px;
+    width: 150px;
+    font-size: 1rem;
+    margin-left: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    
+}
+button:hover{
+    box-shadow:  0px 4px 8px rgb(170, 180, 198);
+}
+#add-button{
+    background-color: rgb(97, 93, 93);
+    border: 3px solid white;
+    color: white;
+}
+#add-button:hover{
+    background-color: #20948b;
+    
+    transition: 0.15s linear;
+}
+
+#button-container{
+    border-bottom: 1px solid #66A5AD;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+/* ----------------------------------Task Display Container----------------------------------- */
+
+.task-display{
+
+    max-height: 220px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;    
+}
+.task-display::-webkit-scrollbar{
+    display: none;
+}
+
+#task-details{
+    list-style: none;
+   
+}
+
+                                    /* Task details in the form of lists  */
+#task-details li{
+    width:95%;
+    margin-left:-8px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    box-shadow: 0px 3px 4px grey;
+    border-radius: 8px;
+}
+#task-details li .name{
+    color:#1e434c ;
+}
+
+
+#task-details li:hover{
+    background-color: rgb(236, 238, 241);
+    transform: scale(1.04);
+    transition: 0.2s ease-in;
+}
+#marked{
+    margin: 5px;
+}
+
+.task-buttons{
+    height: 30px;
+    width: 30px;
+}
+.name-date{
+    
+    width: 80%;
+    padding-left: 5px;
+}
+
+
+.date{
+    color: #2c7873;
+    font-size: smaller;
+    
+}
+
+.current-Task-Category{
+    display: flex;
+    padding: 5px;
+    width: 15%;
+    margin: 5px;
+    margin-right: 12px;
+    height: 20px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px;
+    background-color:#1e434c ;
+    color: white;
+}
+.fa-solid{
+    
+    padding-right: 15px;
+    padding-left: 10px;
+   
+}
+.fa-trash-can{
+    color:rgb(211, 143, 143);
+    
+}
+.fa-trash-can:hover{
+    color: rgb(252, 46, 80);
+    transition: 0.2s ease-in;
+}
+.fa-circle-check{
+    color:#07575b;
+}
