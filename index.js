@@ -32,7 +32,7 @@ app.get('/', function (req, res) {
     Task.find({}, function (err, tasks) {
 
         if (err) {
-            console.log('error in fetching taska from database');
+            console.log('error in fetching tasks from database');
             return;
         }
         return res.render("home", {
@@ -60,15 +60,15 @@ app.post('/create-task', function (req, res) {
             console.log('error in creating a contact');
             return;
         }
-        // console.log(newTask);  // printing the task details in the console for own convinience
-        console.log('task created successfully');
+        
+        // console.log('task created successfully');
         return res.redirect('back');
     });
 
 });
 
 
-// deleting the task by using the id passed with the query
+//------------------------ deleting the task by using the id passed with the query
 app.get('/delete-task', function (req, res) {
 
     let id = req.query.id;
@@ -84,14 +84,30 @@ app.get('/delete-task', function (req, res) {
 });
 
 
+//----------------------- Delete all the completed tasks in one click
+app.post('/delete-all-completed', function(req,res){
+    
+    Task.find({marked:true}, function (err, tasks) {
 
-// here whenever the task circle-check icon is clicked few changes will be made in the databse
-//  first if the task is completed then  marked for that task will be set to true and color will be set 
-//  to lightgreen which is actually used to render the background in the home.ejs file
+        if (err) {
+            console.log('error in fetching tasks from database');
+            return;
+        }
+        let completed_tasks = tasks;
+        // console.log(completed_tasks.length);
+        for( let ele=0;ele<completed_tasks.length;ele++){
+            Task.findByIdAndDelete(completed_tasks[ele].id, function (err) {
+                if (err) {
+                    console.log('Error in deleting an object from database');
+                    return;
+                }   
+            });
+        }
+        
+        return res.redirect('back');
+    });
+})
 
-// if the task was previously marked done, but later want to mark it as undone then the user has to click
-//  the circle check icon again in the list of that task, in this scenario the data about the attribute marked for that task will 
-//  be fetched and then it will be marked as undone and the color will be changes to white
 
 app.get('/task-completed', function (req, res) {
     let id = req.query.id;
@@ -102,7 +118,7 @@ app.get('/task-completed', function (req, res) {
         }
         let value= !docs.marked;  // inverting the value of the marked attribute
         
-        Task.findByIdAndUpdate(id, {"marked": value} ,function (err, docs) {   // updating in the databse
+        Task.findByIdAndUpdate(id, {"marked": value} ,function (err, docs) {   // updating in the database
             if (err) {
                 console.log(err);
                 return;
@@ -114,12 +130,10 @@ app.get('/task-completed', function (req, res) {
         // changing the color attribute to reflect it in the background
         let color = 'white';
         if(value){
-            color='lightgreen';
+            color='#EFDCF9';
         }else{
             color='white';
         }
-
-
 
         Task.findByIdAndUpdate(id, {"color": color} ,function (err, docs) {  // updating in the databse
             if (err) {

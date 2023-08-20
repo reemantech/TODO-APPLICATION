@@ -1,55 +1,59 @@
 body{
-    background-color: #66a5ad;
+    background:linear-gradient(20deg,#000000,#281C2D,#36243e,#8155BA);
     margin: 0px;
     font-family: sans-serif;
 }
+
 
 /* ------------------------------TODO APP Container ------------------------------ */
 .container{
     margin: auto;
     background-color: white;
-    margin-top: 25px;
-    height: 500px;
+    margin-top: 80px;
+    max-height: 600px;
+    min-height: 450px;
     width: 600px;
+    padding-bottom: 3px;
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgb(2, 53, 63);
+    box-shadow: 0px 4px 10px #281C2D;
 }
 
-                                /* heading of the container */
+/*------------------------------ heading of the container -------------------------- */
 h1{
     text-align: center;
-    padding: 4px;
-    border-bottom: 0.12rem solid #07575b;
-    color:#07575b;
+    padding: 8px;
+    border-bottom: 0.4rem solid #420264;
+    color:#420264;
+    /* #420264 */
 }
 
 /* -------------------------------form container--------------------------------------- */
 #form-container{
 
-    font-size: small;
+    font-size: medium;
 }
 
 h6{
-    font-size: small;
+    font-size: medium;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 600;
-    color: #2c7873;
+    color: #36243e;
     height: 20px;
-    margin: 0px;
+    margin: 3px;
     margin-bottom: 5px;
 }
 
-                                /* Task description */
+/*----------------------------- Task description --------------------------------------- */
 #task-description{
     padding-left: 10px;
     padding-top: 10px;
-    border-bottom: 1px solid #66A5AD; 
+    border-bottom: 2px solid #420264; 
     padding-bottom: 10px;
     height: 45px;
     margin-top: -21px;
 }
 #task-description:hover{
-    background-color: #dff3f7;
+    background-color: #CFC1CE;
 }
 input{
     border: none;
@@ -64,23 +68,24 @@ input:focus{
    
 }
 
-                            /*Category and date container is named as more specs */
+/*--------------------------more specs ------------------------------------ */
 #more-specs{
     display: flex;
-    border-bottom: 1px solid #66A5AD;
+    border-bottom: 2px solid #420264;
 }
 
 #category{
     padding: 5px;
     padding-left: 10px;
     width: 48%;
-    border-right: 1px solid #66A5AD;
+    border-right: 2px solid #420264;
 }
 #category:hover{
-    background-color: #dff3f7;
+    background-color: #CFC1CE;
 }
 
 #task-category{
+    
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
@@ -88,19 +93,20 @@ input:focus{
     border: none;
     color: rgb(109, 108, 108);
     padding: 5px;
-    width: 80%;
+    width: 60%;
     background: transparent;
 }
 #task-category:focus{
     outline: none;
 }
+
 #due-date{
     padding: 5px;
     padding-left: 10px;
     width: 47%;
 }
 #due-date:hover{
-    background-color:#dff3f7;
+    background-color:#CFC1CE;
 }
 #due-date input{
     padding: 5px;
@@ -123,18 +129,18 @@ button:hover{
     box-shadow:  0px 4px 8px rgb(170, 180, 198);
 }
 #add-button{
-    background-color: rgb(97, 93, 93);
-    border: 3px solid white;
-    color: white;
+    background-color: white;
+    border: 3px solid #8155BA;
+    color: #8155BA;
 }
 #add-button:hover{
-    background-color: #20948b;
-    
+    background-color: #8155BA;
+    color: white;
     transition: 0.15s linear;
 }
 
 #button-container{
-    border-bottom: 1px solid #66A5AD;
+    border-bottom: 2px solid #420264;
     padding-top: 12px;
     padding-bottom: 12px;
     display: flex;
@@ -146,7 +152,7 @@ button:hover{
 
 .task-display{
 
-    max-height: 220px;
+    max-height: 250px;
     overflow-y: scroll;
     scroll-behavior: smooth;    
 }
@@ -159,7 +165,21 @@ button:hover{
    
 }
 
-                                    /* Task details in the form of lists  */
+/*--------------------------- Task details in the form of list items -------------------  */
+
+#no-task-left{
+    font-size: 2.5rem;
+    color: rgb(169, 168, 168);
+    font-weight: 600;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    width: 80%;
+    justify-content: space-around;
+    text-align: center;
+    height: 20%;
+    margin: auto;
+}
 #task-details li{
     width:95%;
     margin-left:-8px;
@@ -170,7 +190,7 @@ button:hover{
     border-radius: 8px;
 }
 #task-details li .name{
-    color:#1e434c ;
+    color:#36243e ;
 }
 
 
@@ -195,7 +215,7 @@ button:hover{
 
 
 .date{
-    color: #2c7873;
+    color: #5E376D ;
     font-size: smaller;
     
 }
@@ -210,7 +230,7 @@ button:hover{
     align-items: center;
     justify-content: space-around;
     border-radius: 30px;
-    background-color:#1e434c ;
+    background-color:#1B1734;
     color: white;
 }
 .fa-solid{
@@ -220,13 +240,26 @@ button:hover{
    
 }
 .fa-trash-can{
-    color:rgb(211, 143, 143);
+    color:rgb(236, 100, 100);
     
 }
 .fa-trash-can:hover{
-    color: rgb(252, 46, 80);
+    color: rgb(245, 16, 54);
     transition: 0.2s ease-in;
 }
 .fa-circle-check{
     color:#07575b;
+}
+#del-all-btn{
+    margin-left: 8px;
+    width: 23%;
+}
+#del-all-btn:hover{
+    box-shadow: none;
+    color: white;
+    background-color: rgb(230, 27, 27);
+    transition: 0.15s linear;
+    .white{
+        color: rgb(236, 235, 235);
+    }
 }

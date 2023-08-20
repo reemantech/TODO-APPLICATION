@@ -32,27 +32,29 @@
                 </div>
 
                 <div id="more-specs">
-                    
-                    
+
+
                     <!-- categories of task -->
                     <div id="category">
                         <h6>CATEGORY</h6>
 
                         <select name="category_type" id="task-category" required>
-                            <option disabled selected>Choose your task category</option>
-                            <option value="personal">Personal</option>
-                            <option value="school">School</option>
-                            <option value="work">Work</option>
-                            <option value="cleaning">Cleaning</option>
-                            <option value="other">Other</option>
-
+                            <option id="dropDown" disabled selected>Choose your task category </option>
+                            <option value="Personal">Personal</option>
+                            <option value="Leisure">Leisure</option>
+                            <option value="Exercise">Exercise</option>
+                            <option value="School">School</option>
+                            <option value="Work">Work</option>
+                            <option value="Cleaning">Cleaning</option>
+                            <option value="Other">Other</option>
                         </select>
-                        <i class="fa-solid fa-caret-down"></i>
+                        <i class='fa-solid fa-caret-down'></i>
+                        <!-- <i class="fa-solid fa-caret-down" style="margin: -2rem; "></i> -->
                     </div>
 
                     <div id="due-date">
                         <h6>DUE DATE</h6>
-                        <input name="date" type="date" required>
+                        <input id="date-select" name="date" type="date" required>
                     </div>
                 </div>
 
@@ -62,11 +64,7 @@
                         ADD TASK
                     </button>
                 </div>
-
-
-
             </form>
-
 
         </div>
 
@@ -74,103 +72,129 @@
         <div class="task-display">
 
             <ul id="task-details">
-
-                <%for(let i of task_details){%>
-
-                    <!-- if the task is already completed , background color will bw green -->
-                    <%if(i.marked){%>
-                        
-                        <style>
-                            :root {
-                                --done-color: <%=i.color%>
-                            }
-                        </style>
+                <%if (task_details.length==0){%>
+                    <span id="no-task-left">
+                        You are all set !
+                    </span>
 
 
-                        <li style="background-color: var(--done-color);">
-                            <a id="<%=i._id%>" href="/task-completed/?id=<%=i._id%>">
+                    <%}%>
+                        <div>
+                            <%for(let i of task_details){%>
 
-                                <i class="fa-solid fa-circle-check "></i>
+                                <!-- if the task is already completed , background color will bw green -->
+                                <%if(i.marked){%>
 
-
-                            </a>
-
-                            <div class="name-date">
-
-                                <p class="name">
-                                    <%= i.TaskName%>
-                                </p>
-                                <p class="date">
-                                    <i class="fa-regular fa-calendar"></i>
-                                    <%= i.date%>
-                                </p>
-                            </div>
-
-                            <div class="current-Task-Category">
-                                <p>
-                                    <%= i.category_type%>
-                                </p>
-
-                            </div>
-
-                            <a href="/delete-task/?id=<%=i._id%>">
-                                <i class="fa-solid fa-trash-can"></i>
-                            </a>
+                                    <style>
+                                        :root {
+                                            --done-color: <%=i.color%>
+                                        }
+                                    </style>
 
 
-                        </li>
+                                    <li style="background-color: var(--done-color);">
+                                        <a id="<%=i._id%>" href="/task-completed/?id=<%=i._id%>">
 
-                        <%}else{%>
-                            <!--  if the task is marked incomplete in that case the background color will be white -->
-                            <style>
-                                :root {
-                                    --undone-color: <%=i.color%>
-                                }
-                            </style>
-                            <li style="background-color: var(--undone-color);">
-                                <a href="/task-completed/?id=<%=i._id%>">
-
-                                    <i class="fa-solid fa-circle-check "></i>
+                                            <i class="fa-solid fa-circle-check "></i>
 
 
-                                </a>
+                                        </a>
 
-                                <div class="name-date">
+                                        <div class="name-date">
 
-                                    <p class="name">
-                                        <%= i.TaskName%>
-                                    </p>
-                                    <p class="date">
-                                        <i class="fa-regular fa-calendar"></i>
-                                        <%= i.date%>
-                                    </p>
-                                </div>
+                                            <p class="name">
+                                                <%= i.TaskName%>
+                                            </p>
+                                            <p class="date">
+                                                <i class="fa-regular fa-calendar"></i>
+                                                <%= i.date%>
+                                            </p>
+                                        </div>
 
-                                <div class="current-Task-Category">
-                                    <p>
-                                        <%= i.category_type%>
-                                    </p>
+                                        <div class="current-Task-Category">
+                                            <p>
+                                                <%= i.category_type%>
+                                            </p>
 
-                                </div>
+                                        </div>
 
-                                <a href="/delete-task/?id=<%=i._id%>">
-                                    <i class="fa-solid fa-trash-can"></i>
-                                </a>
+                                        <a href="/delete-task/?id=<%=i._id%>">
+                                            <i class="fa-solid fa-trash-can"></i>
+                                        </a>
 
 
-                            </li>
-                            <%}%>
+                                    </li>
 
-                                <%}%>
+                                    <%}else{%>
+                                        <!--  if the task is marked incomplete in that case the background color will be white -->
+                                        <style>
+                                            :root {
+                                                --undone-color: <%=i.color%>
+                                            }
+                                        </style>
+                                        <li style="background-color: var(--undone-color);">
+                                            <a href="/task-completed/?id=<%=i._id%>">
+
+                                                <i class="fa-solid fa-circle-check "></i>
+
+
+                                            </a>
+
+                                            <div class="name-date">
+
+                                                <p class="name">
+                                                    <%= i.TaskName%>
+                                                </p>
+                                                <p class="date">
+                                                    <i class="fa-regular fa-calendar"></i>
+                                                    <%= i.date%>
+                                                </p>
+                                            </div>
+
+                                            <div class="current-Task-Category">
+                                                <p>
+                                                    <%= i.category_type%>
+                                                </p>
+
+                                            </div>
+
+                                            <a href="/delete-task/?id=<%=i._id%>">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                            </a>
+
+
+                                        </li>
+                                        <%}%>
+
+                                            <%}%>
+                        </div>
 
             </ul>
 
 
         </div>
 
+    <!-- delete all the completed tasks in one click  -->
+        <div >
+            <form  action="/delete-all-completed" method="post">
+                <button type="submit" id="del-all-btn" title="Delete all completed tasks">
+                    <i class="white fa-solid fa-trash-can"></i>Completed
+                </button>
+            </form>
+        </div>
+
     </div>
 
+    <!--  Validate the date, Past Date is disabled -->
+    <script>
+        let date = new Date();
+        let day = String(date.getDate()).padStart(2, '0');
+        let month = String(date.getMonth() + 1).padStart(2, '0');
+        let year = date.getFullYear();
 
+        let minDate = year + "-" + month + "-" + day;
+        document.getElementById("date-select").setAttribute("min", minDate)
+    </script>
 
 </body>
 
